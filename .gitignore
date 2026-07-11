@@ -131,3 +131,41 @@ dmypy.json
 allosaurus/pretrained/*
 allosaurus.egg-info
 test_model/*
+
+# Local g2pK experiments (not part of the fine-tuning repository)
+.venv-g2pk/
+.nltk_data/
+g2pk_test.py
+G2PK_SETUP.md
+
+# Local sample and training datasets live outside this repository
+tmp_data/
+data/
+datasets/
+corpus/
+corpora/
+SW*.txt
+한국전자통신연구원_*/
+
+# Raw audio and common dataset archives
+*.pcm
+*.wav
+*.flac
+*.mp3
+*.m4a
+*.tar
+*.tar.gz
+*.tgz
+*.zip
+
+# Fine-tuning features, checkpoints, and experiment outputs
+*.ark
+*.scp
+*.pt
+*.pth
+*.ckpt
+checkpoints/
+models/
+runs/
+wandb/
+tensorboard/

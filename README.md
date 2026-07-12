@@ -59,12 +59,13 @@ allosaurus/
 저장소 루트에서 가상환경을 만들고 패키지를 설치합니다.
 
 ```bash
-python3 -m venv .venv
-source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-python -m pip install -e .
+conda env create -f environment.yml
+conda activate allosaurus-ft
 ```
+
+이미 환경이 존재한다면 `conda env update -f environment.yml --prune`으로
+동기화할 수 있습니다. CUDA 12.1을 사용할 수 없는 환경에서는
+`environment.yml`의 `pytorch-cuda` 항목을 시스템에 맞게 변경해야 합니다.
 
 사전 학습 모델을 내려받습니다.
 

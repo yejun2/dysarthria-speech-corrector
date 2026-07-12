@@ -1,0 +1,26 @@
+name: allosaurus-ft
+
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+
+dependencies:
+  - python=3.10
+  - pip
+  - numpy=1.26.4
+  - scipy=1.11.4
+  - pytorch=2.5.1
+  - pytorch-cuda=12.1
+  - pyyaml=6.0.3
+  - pytest
+  - pip:
+      - editdistance==0.8.1
+      - panphon==0.20.0
+      - requests==2.34.2
+      - resampy==0.4.3
+      - setuptools==80.9.0
+      - tqdm==4.68.4
+      - wandb==0.28.0
+      - -e .

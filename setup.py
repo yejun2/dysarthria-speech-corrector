@@ -15,5 +15,9 @@ setup(
       'panphon',
       'torch',
       'editdistance',
+      'requests',
+      'tqdm',
+      'wandb',
+      'PyYAML',
    ]
 )

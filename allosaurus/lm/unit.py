@@ -10,7 +10,10 @@ def read_unit(unit_path):
 
     idx = 0
 
-    for line in open(str(unit_path), 'r', encoding='utf-8'):
+    with open(str(unit_path), 'r', encoding='utf-8') as stream:
+        lines = stream.readlines()
+
+    for line in lines:
         fields = line.strip().split()
 
         assert len(fields) < 3, " each line should contain at most two field separated by space."

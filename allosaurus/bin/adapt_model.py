@@ -26,6 +26,12 @@ if __name__ == '__main__':
     parser.add_argument('--log',              type=str,   default='none',help='file to store training logs. do not save if none')
     parser.add_argument('--verbose',          type=bool,  default=True,  help='print all training logs on stdout')
     parser.add_argument('--report_per_batch', type=int,   default=10,    help='report training stats every N epoch')
+    parser.add_argument('--expected_validate_size', type=int, default=5000, help='fail unless validation contains this many utterances; use 0 to disable')
+    parser.add_argument('--wandb_project', type=str, default='allosaurus-finetune', help='W&B project name; use none to disable')
+    parser.add_argument('--wandb_entity', type=str, default='', help='optional W&B entity/team')
+    parser.add_argument('--wandb_run_name', type=str, default='', help='optional W&B run name')
+    parser.add_argument('--wandb_mode', type=str, default='online', choices=['online', 'offline', 'disabled'], help='W&B operating mode')
+    parser.add_argument('--phone_init_map', type=str, default='none', help='JSON map of custom target phone to pretrained source phone')
 
     train_config = parser.parse_args()
 
@@ -33,6 +39,14 @@ if __name__ == '__main__':
     data_path = Path(train_config.path)
     train_loader = read_loader(data_path / 'train', train_config)
     validate_loader = read_loader(data_path / 'validate', train_config)
+
+    validate_size = len(validate_loader.dataset)
+    if train_config.expected_validate_size and validate_size != train_config.expected_validate_size:
+        train_loader.close()
+        validate_loader.close()
+        raise ValueError(
+            f"expected {train_config.expected_validate_size} validation utterances, found {validate_size}"
+        )
 
     # initialize the target model path with the old model
     copy_model(train_config.pretrained_model, train_config.new_model)

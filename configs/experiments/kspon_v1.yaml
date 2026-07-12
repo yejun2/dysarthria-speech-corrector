@@ -1,0 +1,30 @@
+pipeline:
+  stage: train
+
+experiment:
+  name: kspon-ko-v1
+
+data:
+  # Supply the machine-specific path with --data-root when creating splits.
+  data_root: null
+  work_dir: workspace/kspon_v1
+  seed: 42
+  expected_validate_size: 5000
+
+model:
+  pretrained_model: uni2005
+  new_model: kspon_ko_v1
+  inventory: configs/inventories/kspon_korean_ipa.txt
+  phone_initialization: configs/inventories/kspon_phone_init.json
+
+training:
+  device_id: 0
+  epochs: 10
+  learning_rate: 0.001
+  batch_frame_size: 6000
+
+wandb:
+  project: allosaurus-finetune
+  entity: yejundevelop-pusan-national-university
+  run_name: kspon-ko-v1
+  mode: online

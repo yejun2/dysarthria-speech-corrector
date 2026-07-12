@@ -103,6 +103,8 @@ celerybeat.pid
 
 # Environments
 .env
+.env.*
+!.env.example
 .venv
 env/
 venv/
@@ -127,9 +129,18 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# OS, editor, and local agent state
+.DS_Store
+Thumbs.db
+.vscode/
 .idea/
-allosaurus/pretrained/*
-allosaurus.egg-info
+.agents/
+.codex/
+
+# Downloaded models and package build metadata
+allosaurus/pretrained/
+allosaurus.egg-info/
 test_model/*
 
 # Local g2pK experiments (not part of the fine-tuning repository)
@@ -159,6 +170,15 @@ SW*.txt
 *.zip
 
 # Fine-tuning features, checkpoints, and experiment outputs
+workspace/
+artifacts/
+outputs/
+reports/
+runs/
+logs/
+wandb/
+tensorboard/
+slurm-*.out
 *.ark
 *.scp
 *.pt
@@ -166,6 +186,3 @@ SW*.txt
 *.ckpt
 checkpoints/
 models/
-runs/
-wandb/
-tensorboard/

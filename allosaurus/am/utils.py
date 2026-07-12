@@ -2,7 +2,7 @@ import torch
 from collections import OrderedDict
 import numpy as np
 
-def torch_load(model, path, device_id, unit_mask=None):
+def torch_load(model, path, device_id, unit_mask=None, phone_init_map=None):
     """Load torch model states.
 
     Args:
@@ -48,6 +48,14 @@ def torch_load(model, path, device_id, unit_mask=None):
 
                 for domain_phone_id, target_phone_id in unit_mask.unit_map.items():
                     new_v[target_phone_id] = v[domain_phone_id]
+
+                # Explicit target <- source initialization overrides the
+                # articulatory approximation while keeping distinct targets.
+                if phone_init_map:
+                    for target_phone, source_phone in phone_init_map.items():
+                        target_phone_id = unit_mask.target_unit.get_id(target_phone)
+                        source_phone_id = unit_mask.domain_unit.get_id(source_phone)
+                        new_v[target_phone_id] = v[source_phone_id]
 
                 v = new_v
 

@@ -1,4 +1,10 @@
-# Allosaurus
+# Dysarthria Speech Corrector
+
+Undergraduate graduation project at Pusan National University, built on the
+Allosaurus universal phone recognizer. This repository adds a Korean 34-phone
+IPA fine-tuning pipeline; see [docs/finetuning.md](docs/finetuning.md).
+
+## Allosaurus
 
 ![CI Test](https://github.com/xinjli/allosaurus/actions/workflows/python.yml/badge.svg)
 

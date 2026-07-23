@@ -469,22 +469,8 @@ test라면 실제 크기에 맞춰 `--expected-validate-size`를 지정합니다
 manifest의 WAV 경로는 절대 경로입니다. `workspace/`를 복사하지 말고 새 머신의 데이터
 경로에서 동일한 seed로 split과 특징을 다시 생성하세요.
 
-</details>
-
-## 한계와 책임 있는 사용
-
-- KsponSpeech는 일반 한국어 음성 중심이므로 조음장애 음성에 대한 실제 일반화 성능은
-  별도의 임상 데이터로 검증해야 합니다.
-- PER은 음소열 편집 오류를 측정하지만 발음의 심각도, 명료도, 치료 효과를 직접
-  의미하지 않습니다.
-- 표준 목표 발음과 화자의 실제 발음 차이, 음운 변동, 장단·억양·음절 경계는 별도의
-  발음 사전이나 forced alignment 계층이 필요할 수 있습니다.
-- 음성 데이터에는 개인정보가 포함될 수 있습니다. 데이터셋의 이용 조건과 연구
-  윤리, 보관 및 비식별화 정책을 준수하세요.
-
 ## 참고 자료 및 인용
 
-- [파인튜닝 상세 문서](docs/finetuning.md)
 - [원본 Allosaurus 저장소](https://github.com/xinjli/allosaurus)
 - [Universal Phone Recognition with a Multilingual Allophone System](https://arxiv.org/abs/2002.11800)
 - [KsponSpeech: Korean Spontaneous Speech Corpus for Automatic Speech Recognition](https://aihub.or.kr/)
